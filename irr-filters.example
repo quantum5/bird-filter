@@ -1,0 +1,12 @@
+# You can use # for comments.
+EXAMPLE     AS-EXAMPLE
+EXAMPLE2    RIPE::AS64500:AS-EXAMPLE2       v4
+EXAMPLE3    ARIN::AS-EXAMPLE3               v6
+# This will cause make-irr-filter to generate a configuration file containing:
+# * IRR_EXAMPLE_V4:     allowed IPv4 prefixes queried from AS-EXAMPLE.
+# * IRR_EXAMPLE_V6:     allowed IPv6 prefixes queried from AS-EXAMPLE.
+# * IRR_EXAMPLE_ASN:    allowed ASNs queried from AS-EXAMPLE.
+# * IRR_EXAMPLE2_V4:    allowed IPv4 prefixes queried from AS64500:AS-EXAMPLE2 defined in the RIPE database.
+# * IRR_EXAMPLE2_ASN:   allowed ASNs queried from RIPE::AS64500:AS-EXAMPLE2.
+# * IRR_EXAMPLE3_V6:    allowed IPv6 prefixes queried from AS-EXAMPLE3 defined in the ARIN database.
+# * IRR_EXAMPLE3_ASN:   allowed ASNs queried from ARIN::AS-EXAMPLE3.
