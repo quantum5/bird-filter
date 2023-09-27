@@ -238,6 +238,29 @@ used by downstreams:
 5. Create a cron job that runs `make-irr-filter` followed by `birdc configure`.
    Daily is a reasonable cadence.
 
+## RPKI filtering
+
+While this filter library implements RPKI, you still need to populate the
+`rpki4` and `rpki6` routing tables via an `rpki` protocol in `bird`. Otherwise,
+all routes will be treated as RPKI unknown. This can be configured as follows:
+
+```
+protocol rpki {
+    roa4 { table rpki4; };
+    roa6 { table rpki6; };
+    transport tcp;
+    remote "127.0.0.1" port 9001;
+    retry keep 90;
+    refresh keep 900;
+    expire keep 172800;
+}
+```
+
+The example above assumes you are running the RTR protocol on `127.0.0.1:9001`.
+This may be provided by something like Routinator, `rtrtr`, `gortr`, or
+something similar. I recommend using `rtrtr` to pull a JSON feed from someone's
+Routinator instance over HTTPS.
+
   [pv]: https://pathvector.io/
   [filter]: filter_bgp.conf
   [skeleton]: skeleton.conf
