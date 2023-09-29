@@ -208,6 +208,34 @@ routes. For your protection, downstream imports without IRR is *not* supported.
 For details about setting up IRR, see the [IRR filtering](#irr-filtering)
 section below.
 
+### Route collectors
+
+```
+protocol bgp route_collector {
+    description "Exaple Route Collector";
+    local 2001:db8:2000::2 as 64500;
+    neighbor 2001:db8:9000::1 as 64505;
+    multihop;
+
+    ipv4 {
+        add paths on;
+        import none;
+        export where export_monitoring();
+    };
+
+    ipv6 {
+        add paths on;
+        import none;
+        export where export_monitoring();
+    };
+}
+```
+
+The example above assumes you are AS64500 and establishes a multihop BGP
+session with your route collector over IPv6, using multiprotocol BGP to export
+routes for both IPv4 and IPv6 in a single session, using `add paths` to also
+all routes instead of the best routes available.
+
 ## BGP communities
 
 The following large informational communities are implemented by default:
