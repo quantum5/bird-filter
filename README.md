@@ -25,10 +25,12 @@ solution like [PathVector][pv].
 
 ## Defining BGP sessions
 
-You can use [`skeleton.conf`][skeleton] as a basic `bird` starting config. Note
-that in this config, static protocol routes are internal to `bird` and will not
-be exported to the kernel routing table. You can change this by changing the
-export rules for `protocol kernel`.
+You can use [`skeleton.conf`][skeleton] as a basic `bird` starting config.
+Remember to read the `NOTE`s and change the things marked `FIXME`.
+
+Also note that in this config, static protocol routes are internal to `bird`
+and will not be exported to the kernel routing table. You can change this by
+changing the export rules for `protocol kernel`.
 
 This filter library makes use of two basic static protocols:
 * `node_v4`: IPv4 routes to be exported by the `export_cone` helper.
