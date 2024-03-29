@@ -271,6 +271,30 @@ used by downstreams:
 5. Create a cron job that runs `make-irr-filter` followed by `birdc configure`.
    Daily is a reasonable cadence.
 
+## PeeringDB prefix limits
+
+1. Follow [`prefix-limits.example`][prefix-conf] and create
+   `/etc/bird/prefix-limits` for peers for whom you'd like to enforce a prefix
+   limit.
+2. Adjust [`make-prefix-limits`][prefix-script] to use your own PeeringDB mirror
+   if you risk getting rate limited.
+3. Run `make-prefix-limits` to re-generate the prefix limits file.
+4. Add `include "prefix_limit.conf";` into your `bird.conf`.
+5. You can use constants like `LIMIT_AS200351_V4` or `LIMIT_AS200351_V6` in your
+   `bird.conf`, for example:
+   ```
+   protocol bgp peer_v6 {
+       ...
+
+       ipv6 {
+           import limit LIMIT_AS23456_V6 action disable;
+           ...
+       };
+   }
+   ```
+6. Create a cron job that runs `make-prefix-limits` followed by
+   `birdc configure`. Daily is a reasonable cadence.
+
 ## RPKI filtering
 
 While this filter library implements RPKI, you still need to populate the
@@ -299,3 +323,5 @@ Routinator instance over HTTPS.
   [skeleton]: skeleton.conf
   [irr-conf]: irr-filters.example
   [irr-script]: make-irr-filter
+  [prefix-conf]: prefix-limits.example
+  [prefix-script]: make-prefix-limits

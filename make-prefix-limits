@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+
+# Change this to a PeeringDB mirror
+PEERINGDB=https://www.peeringdb.com
+
+PEER_SOURCE=/etc/bird/prefix-limits
+LIMIT_OUTPUT=/etc/bird/prefix_limits.conf
+
+[ -f "$PEER_SOURCE" ] || exit
+
+tmpdir="$(mktemp -d /tmp/bird-prefix-limit.XXXXXX)"
+cleanup() {
+  rm -rf "$tmpdir"
+}
+trap cleanup EXIT
+
+join_by() {
+  local d=${1-} f=${2-}
+  if shift 2; then
+    printf %s "$f" "${@/#/$d}"
+  fi
+}
+
+readarray -t asns < <(grep -vE '^#|^$' "$PEER_SOURCE")
+
+curl -s "$PEERINGDB/api/net?asn__in=$(join_by , "${asns[@]}")" | \
+  jq -r '(.data // [])[] | "define LIMIT_AS\(.asn)_V4 = \(.info_prefixes4);\ndefine LIMIT_AS\(.asn)_V6 = \(.info_prefixes6);"' \
+  > "$tmpdir/limits.conf"
+
+mv "$tmpdir/limits.conf" "$LIMIT_OUTPUT"
+chmod a+r "$LIMIT_OUTPUT"
