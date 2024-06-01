@@ -217,7 +217,7 @@ section below.
 
 ```
 protocol bgp route_collector {
-    description "Exaple Route Collector";
+    description "Example Route Collector";
     local 2001:db8:2000::2 as 64500;
     neighbor 2001:db8:9000::1 as 64505;
     multihop;
