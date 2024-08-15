@@ -256,7 +256,7 @@ used by downstreams:
 * `YOUR_ASN:10:x`: do not export route to ASx;
 * `YOUR_ASN:11:x`: prepend `YOUR_ASN` once upon export to ASx;
 * `YOUR_ASN:12:x`: prepend `YOUR_ASN` twice upon export to ASx; and
-* `YOUR_ASN:12:x`: prepend `YOUR_ASN` thrice upon export to ASx.
+* `YOUR_ASN:13:x`: prepend `YOUR_ASN` thrice upon export to ASx.
 
 ## IRR filtering
 
