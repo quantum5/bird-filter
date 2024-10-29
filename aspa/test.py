@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 
 from aspa.data import ASPA, parse_json
-from aspa.validate import Validator
+from aspa.validate import BirdValidator, Validator
 
 
 class ParserTest(unittest.TestCase):
@@ -156,6 +156,18 @@ class UpstreamTest(unittest.TestCase):
         self.assertTrue(self.validator.is_aspa_invalid_upstream(64530, [64521, 64510, 64510, 64521, 64531]))
         self.assertTrue(self.validator.is_aspa_invalid_upstream(64531, [64520, 64512, 64512, 64520, 64530]))
         self.assertTrue(self.validator.is_aspa_invalid_upstream(64531, [64521, 64521, 64514, 64520, 64530]))
+
+
+class BirdCustomerTest(CustomerTest):
+    validator_class = BirdValidator
+
+
+class BirdPeerTest(PeerTest):
+    validator_class = BirdValidator
+
+
+class BirdUpstreamTest(UpstreamTest):
+    validator_class = BirdValidator
 
 
 if __name__ == '__main__':

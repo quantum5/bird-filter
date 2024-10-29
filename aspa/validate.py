@@ -51,3 +51,46 @@ class Validator:
                 min_down_ramp = max(min_down_ramp, i)
 
         return min_down_ramp > max_up_ramp
+
+
+class BirdValidator(Validator):
+    """Validator coded with only language features available in bird DSL."""
+
+    def is_aspa_invalid_customer(self, my_asn: int, bgp_path: list[int]) -> bool:
+        prev_asn = my_asn
+
+        for asn in bgp_path:
+            if prev_asn != asn and self.is_invalid_pair(prev_asn, asn):
+                return True
+            prev_asn = asn
+
+        return False
+
+    def is_aspa_invalid_peer(self, peer_asn: int, bgp_path: list[int]) -> bool:
+        prev_asn = peer_asn
+
+        for asn in bgp_path:
+            if asn != peer_asn and prev_asn != asn and self.is_invalid_pair(prev_asn, asn):
+                return True
+            prev_asn = asn
+
+        return False
+
+    def is_aspa_invalid_upstream(self, my_asn: int, bgp_path: list[int]) -> bool:
+        prev_asn = my_asn
+        max_up_ramp = len(bgp_path)
+        min_down_ramp = 0
+        i = 0
+
+        for asn in bgp_path:
+            if prev_asn != asn:
+                if self.is_invalid_pair(asn, prev_asn) and max_up_ramp > i:
+                    max_up_ramp = i
+
+                if self.is_invalid_pair(prev_asn, asn) and min_down_ramp < i:
+                    min_down_ramp = i
+
+            prev_asn = asn
+            i += 1
+
+        return min_down_ramp > max_up_ramp
