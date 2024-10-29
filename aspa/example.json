@@ -1,0 +1,822 @@
+{
+  "metadata": {
+    "generated": 1730172244,
+    "generatedTime": "2024-10-29T03:24:04Z"
+  },
+  "aspas": [
+    {
+      "customer": "AS11358",
+      "providers": [
+        "AS835",
+        "AS924",
+        "AS6939",
+        "AS20473",
+        "AS34927"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS13852",
+      "providers": [
+        "AS6939",
+        "AS20473",
+        "AS34927",
+        "AS41051",
+        "AS52025"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS15562",
+      "providers": [
+        "AS2914",
+        "AS8283",
+        "AS51088",
+        "AS206238"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS19330",
+      "providers": [
+        "AS393577"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS28584",
+      "providers": [
+        "AS28605"
+      ],
+      "ta": "lacnic"
+    },
+    {
+      "customer": "AS33733",
+      "providers": [
+        "AS174",
+        "AS6939",
+        "AS12186",
+        "AS47787",
+        "AS200454"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS40544",
+      "providers": [
+        "AS924",
+        "AS6939",
+        "AS12186",
+        "AS52025"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS41720",
+      "providers": [
+        "AS174",
+        "AS1299",
+        "AS9002",
+        "AS50877",
+        "AS60068",
+        "AS203446",
+        "AS212508"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS44324",
+      "providers": [
+        "AS945",
+        "AS955",
+        "AS1299",
+        "AS3204",
+        "AS6939",
+        "AS7720",
+        "AS8772",
+        "AS8849",
+        "AS15353",
+        "AS18041",
+        "AS20473",
+        "AS29632",
+        "AS32595",
+        "AS34465",
+        "AS34927",
+        "AS41051",
+        "AS43426",
+        "AS47272",
+        "AS51087",
+        "AS53667",
+        "AS53808",
+        "AS59538",
+        "AS61112",
+        "AS134823",
+        "AS138997",
+        "AS139317",
+        "AS151364",
+        "AS199545",
+        "AS199765",
+        "AS200105",
+        "AS206499",
+        "AS207656",
+        "AS207841",
+        "AS209554",
+        "AS209735",
+        "AS212483"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS47272",
+      "providers": [
+        "AS835",
+        "AS924",
+        "AS1299",
+        "AS6830",
+        "AS6939",
+        "AS20473",
+        "AS21738",
+        "AS25759",
+        "AS34927",
+        "AS35133",
+        "AS41051",
+        "AS48605",
+        "AS50391",
+        "AS50917",
+        "AS52025",
+        "AS52210",
+        "AS58057",
+        "AS210667",
+        "AS212514",
+        "AS212895"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS47689",
+      "providers": [
+        "AS924",
+        "AS1299",
+        "AS6939",
+        "AS21738",
+        "AS34465",
+        "AS34549",
+        "AS34927",
+        "AS395823"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS48070",
+      "providers": [
+        "AS174",
+        "AS1299"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS48606",
+      "providers": [
+        "AS30893",
+        "AS54681",
+        "AS57974",
+        "AS59678",
+        "AS210691",
+        "AS212276"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS50224",
+      "providers": [
+        "AS6939",
+        "AS15353",
+        "AS26930",
+        "AS34465",
+        "AS37988",
+        "AS50104",
+        "AS52025",
+        "AS52210",
+        "AS59920",
+        "AS60841",
+        "AS210475",
+        "AS400304"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS50391",
+      "providers": [
+        "AS6939",
+        "AS20473",
+        "AS48070"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS51019",
+      "providers": [
+        "AS6939",
+        "AS34549",
+        "AS34927",
+        "AS52025",
+        "AS207841"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS51396",
+      "providers": [
+        "AS6939",
+        "AS30823",
+        "AS44066",
+        "AS49581",
+        "AS60223",
+        "AS203446",
+        "AS214995",
+        "AS215436"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS52025",
+      "providers": [
+        "AS174",
+        "AS835",
+        "AS906",
+        "AS917",
+        "AS924",
+        "AS1299",
+        "AS3257",
+        "AS6204",
+        "AS6939",
+        "AS7720",
+        "AS8860",
+        "AS12186",
+        "AS18041",
+        "AS20473",
+        "AS21700",
+        "AS21738",
+        "AS25369",
+        "AS29802",
+        "AS32097",
+        "AS34549",
+        "AS34927",
+        "AS35133",
+        "AS35661",
+        "AS36369",
+        "AS37988",
+        "AS39409",
+        "AS47787",
+        "AS48070",
+        "AS48605",
+        "AS50917",
+        "AS51519",
+        "AS52210",
+        "AS56655",
+        "AS57695",
+        "AS61138",
+        "AS197216",
+        "AS199545",
+        "AS209022",
+        "AS209533",
+        "AS394177",
+        "AS396998",
+        "AS397423",
+        "AS400304",
+        "AS400587"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS52210",
+      "providers": [
+        "AS174",
+        "AS835",
+        "AS6939",
+        "AS52025",
+        "AS62513",
+        "AS210667"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS54148",
+      "providers": [
+        "AS835",
+        "AS924",
+        "AS6939",
+        "AS20473",
+        "AS21738",
+        "AS34927",
+        "AS37988",
+        "AS47272",
+        "AS50917",
+        "AS53667"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS54218",
+      "providers": [
+        "AS917",
+        "AS16509",
+        "AS37988",
+        "AS53667",
+        "AS59678"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS56762",
+      "providers": [
+        "AS47689"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS57194",
+      "providers": [
+        "AS924",
+        "AS52210"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS57984",
+      "providers": [
+        "AS8283",
+        "AS48112",
+        "AS206763"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS59678",
+      "providers": [
+        "AS6939",
+        "AS34927",
+        "AS54218",
+        "AS55081"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS60223",
+      "providers": [
+        "AS945",
+        "AS49581"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS60431",
+      "providers": [
+        "AS34927",
+        "AS41495",
+        "AS50917"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS60841",
+      "providers": [
+        "AS30456",
+        "AS400304"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS149301",
+      "providers": [
+        "AS20473",
+        "AS61138"
+      ],
+      "ta": "apnic"
+    },
+    {
+      "customer": "AS151642",
+      "providers": [
+        "AS20473",
+        "AS61138"
+      ],
+      "ta": "apnic"
+    },
+    {
+      "customer": "AS198136",
+      "providers": [
+        "AS0"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS199376",
+      "providers": [
+        "AS47311",
+        "AS61112",
+        "AS150249",
+        "AS151544",
+        "AS199762",
+        "AS209533",
+        "AS215379"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS199762",
+      "providers": [
+        "AS945",
+        "AS6939",
+        "AS8849",
+        "AS15353",
+        "AS34927",
+        "AS44817",
+        "AS47311",
+        "AS48605",
+        "AS140731",
+        "AS150249"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS200242",
+      "providers": [
+        "AS835",
+        "AS6939",
+        "AS21738",
+        "AS34465",
+        "AS34927",
+        "AS52025",
+        "AS59678",
+        "AS60841",
+        "AS210475"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS200351",
+      "providers": [
+        "AS34927",
+        "AS47272",
+        "AS209022",
+        "AS210475"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS200454",
+      "providers": [
+        "AS174",
+        "AS6424",
+        "AS6939",
+        "AS9186",
+        "AS12186"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS202076",
+      "providers": [
+        "AS207960"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS202359",
+      "providers": [
+        "AS30740",
+        "AS33920",
+        "AS41495"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS202881",
+      "providers": [
+        "AS205329"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS203619",
+      "providers": [
+        "AS200454"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS203843",
+      "providers": [
+        "AS6939",
+        "AS20473",
+        "AS53667"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS204857",
+      "providers": [
+        "AS50224",
+        "AS59920",
+        "AS60841",
+        "AS400304"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS204931",
+      "providers": [
+        "AS34927",
+        "AS44103",
+        "AS207656"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS205329",
+      "providers": [
+        "AS945",
+        "AS983",
+        "AS6939",
+        "AS7720",
+        "AS8894",
+        "AS9409",
+        "AS20473",
+        "AS34927",
+        "AS41051",
+        "AS131657",
+        "AS134823",
+        "AS151364"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS205603",
+      "providers": [
+        "AS38074",
+        "AS59105"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS205663",
+      "providers": [
+        "AS20473",
+        "AS61138"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS205789",
+      "providers": [
+        "AS200242",
+        "AS207960"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS205848",
+      "providers": [
+        "AS1299",
+        "AS6939",
+        "AS34549",
+        "AS34927",
+        "AS52025",
+        "AS209022"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS207487",
+      "providers": [
+        "AS20473"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS207841",
+      "providers": [
+        "AS174",
+        "AS6939",
+        "AS137409"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS207960",
+      "providers": [
+        "AS6939",
+        "AS20473",
+        "AS34854",
+        "AS34927",
+        "AS136620",
+        "AS202359",
+        "AS207968"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS210561",
+      "providers": [
+        "AS207960"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS212068",
+      "providers": [
+        "AS6939",
+        "AS13237",
+        "AS62240",
+        "AS207960"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS212245",
+      "providers": [
+        "AS917",
+        "AS57695",
+        "AS212068"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS212934",
+      "providers": [
+        "AS835",
+        "AS6939",
+        "AS34927",
+        "AS52210",
+        "AS53667",
+        "AS61138",
+        "AS62513",
+        "AS209533",
+        "AS210667"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215028",
+      "providers": [
+        "AS216107"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215131",
+      "providers": [
+        "AS8283",
+        "AS34927"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215147",
+      "providers": [
+        "AS47263",
+        "AS207252",
+        "AS215828"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215436",
+      "providers": [
+        "AS6762",
+        "AS6939",
+        "AS51396",
+        "AS60223"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215664",
+      "providers": [
+        "AS1299",
+        "AS3204",
+        "AS6939",
+        "AS34549",
+        "AS41720",
+        "AS56382",
+        "AS203446",
+        "AS212508"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215778",
+      "providers": [
+        "AS34465",
+        "AS39249",
+        "AS41051",
+        "AS207656",
+        "AS209533",
+        "AS393577"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215828",
+      "providers": [
+        "AS6204",
+        "AS6939",
+        "AS8772",
+        "AS29390",
+        "AS29632",
+        "AS34465",
+        "AS34927",
+        "AS39249",
+        "AS41051",
+        "AS44592",
+        "AS48752",
+        "AS50917",
+        "AS51019",
+        "AS58057",
+        "AS62403",
+        "AS152726",
+        "AS197071",
+        "AS199524",
+        "AS203686",
+        "AS207656",
+        "AS209533",
+        "AS210464",
+        "AS216324",
+        "AS216360",
+        "AS393577"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS215849",
+      "providers": [
+        "AS215828"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS216107",
+      "providers": [
+        "AS924",
+        "AS6939",
+        "AS16509",
+        "AS20473",
+        "AS21738",
+        "AS34927",
+        "AS63473",
+        "AS209022",
+        "AS211588"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS216311",
+      "providers": [
+        "AS6939",
+        "AS13852",
+        "AS20473",
+        "AS34927",
+        "AS52025"
+      ],
+      "ta": "ripe"
+    },
+    {
+      "customer": "AS267386",
+      "providers": [
+        "AS6939",
+        "AS25933",
+        "AS28220",
+        "AS28649",
+        "AS267613"
+      ],
+      "ta": "lacnic"
+    },
+    {
+      "customer": "AS270470",
+      "providers": [
+        "AS53062"
+      ],
+      "ta": "lacnic"
+    },
+    {
+      "customer": "AS393577",
+      "providers": [
+        "AS1299",
+        "AS6939",
+        "AS32097",
+        "AS40676",
+        "AS137409"
+      ],
+      "ta": "arin"
+    },
+    {
+      "customer": "AS401111",
+      "providers": [
+        "AS945",
+        "AS6939",
+        "AS17676"
+      ],
+      "ta": "arin"
+    }
+  ]
+}
