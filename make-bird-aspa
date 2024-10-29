@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import argparse
+
+from aspa.data import parse_json
+from aspa.generate import generate_bird
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Generates is_aspa_invalid_pair function for bird')
+    parser.add_argument('aspa_json', type=str, help='the JSON file with ASPA data')
+    args = parser.parse_args()
+
+    with open(args.aspa_json) as f:
+        aspas = parse_json(f.read())
+
+    print(generate_bird(aspas))
+
+
+if __name__ == '__main__':
+    main()
