@@ -8,18 +8,11 @@ def generate_bird(aspas: list[ASPA]) -> str:
     ]
 
     for aspa in aspas:
-        if not aspa.providers:
+        if aspa.providers:
+            asns = ', '.join(map(str, aspa.providers))
+            lines.append(f'        {aspa.customer}: if upstream_asn !~ [{asns}] then return true;')
+        else:
             lines.append(f'        {aspa.customer}: return true;')
-            continue
-
-        lines.append(f'        {aspa.customer}: case upstream_asn {{')
-        for provider in aspa.providers:
-            lines.append(f'            {provider}: {{}}')
-
-        lines += [
-            '            else: return true;',
-            '        }'
-        ]
 
     lines += [
         '    }',
