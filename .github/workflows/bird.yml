@@ -16,3 +16,8 @@ jobs:
           sudo apt-get install -y bird2
       - name: Test skeleton.conf syntax
         run: /usr/sbin/bird -c skeleton.conf -p
+
+      - name: Generate aspa_invalids.conf
+        run: ./make-bird-aspa aspa/example.json > aspa_invalids.conf
+      - name: Test skeleton-aspa.conf syntax
+        run: /usr/sbin/bird -c skeleton-aspa.conf -p
