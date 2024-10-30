@@ -295,11 +295,12 @@ used by downstreams:
 6. Create a cron job that runs `make-prefix-limits` followed by
    `birdc configure`. Daily is a reasonable cadence.
 
-## RPKI filtering
+## RPKI ROA filtering
 
-While this filter library implements RPKI, you still need to populate the
-`rpki4` and `rpki6` routing tables via an `rpki` protocol in `bird`. Otherwise,
-all routes will be treated as RPKI unknown. This can be configured as follows:
+While this filter library implements RPKI Route Origin Authorization (ROA)
+filtering, you still need to populate the `rpki4` and `rpki6` routing tables via
+an `rpki` protocol in `bird`. Otherwise, all routes will be treated as RPKI
+unknown. This can be configured as follows:
 
 ```
 protocol rpki {
@@ -318,6 +319,89 @@ This may be provided by something like Routinator, `rtrtr`, `gortr`, or
 something similar. I recommend using `rtrtr` to pull a JSON feed from someone's
 Routinator instance over HTTPS.
 
+## ASPA filtering (experimental)
+
+This filter library also offers an implementation of the [draft ASPA
+standard][aspa] for `bird`. To use it, use the [`make-bird-aspa`][aspa-script]
+script to generate the `is_aspa_invalid_pair` function on which
+`filter_aspa.conf` depends. This requires the JSON output from Routinator (see
+[`aspa/example.json`][aspa-example] for an example):
+
+```console
+$ ./make-bird-aspa aspa/example.json > aspa_invalids.conf
+```
+
+Then, apply the following patch to [`filter_bgp.conf`][filter]:
+
+```diff
+diff --git a/filter_bgp.conf b/filter_bgp.conf
+index eb85db7..27a2162 100644
+--- a/filter_bgp.conf
++++ b/filter_bgp.conf
+@@ -107,6 +107,9 @@ define ASN_BOGON = [
+     4294967295              # RFC 7300 Last 32 bit ASN
+ ];
+ 
++include "aspa_invalids.conf";
++include "filter_aspa.conf";
++
+ function ip_bogon() {
+     case net.type {
+         NET_IP4: return net ~ IPV4_BOGON;
+@@ -208,6 +211,11 @@ function import_peer_trusted(int peer_asn) {
+     bgp_large_community.add((MY_ASN, LC_INFO, INFO_PEER));
+     bgp_large_community.add((MY_ASN, LC_PEER_ASN, peer_asn));
+ 
++    if is_aspa_invalid_peer(peer_asn) then {
++        print proto, ": ", net, ": invalid ASPA: ", bgp_path;
++        return false;
++    }
++
+     return import_safe(false);
+ }
+ 
+@@ -232,6 +240,11 @@ function import_ixp_trusted(int ixp_id) {
+     bgp_large_community.add((MY_ASN, LC_INFO, INFO_IXP_RS));
+     bgp_large_community.add((MY_ASN, LC_IXP_ID, ixp_id));
+ 
++    if is_aspa_invalid_peer(bgp_path.first) then {
++        print proto, ": ", net, ": invalid ASPA: ", bgp_path;
++        return false;
++    }
++
+     return import_safe(false);
+ }
+ 
+@@ -256,6 +269,11 @@ function import_transit(int transit_asn; bool default_route) {
+     bgp_large_community.add((MY_ASN, LC_INFO, INFO_TRANSIT));
+     bgp_large_community.add((MY_ASN, LC_PEER_ASN, transit_asn));
+ 
++    if is_aspa_invalid_upstream() then {
++        print proto, ": ", net, ": invalid ASPA: ", bgp_path;
++        return false;
++    }
++
+     return import_safe(default_route);
+ }
+ 
+@@ -272,6 +290,11 @@ function import_downstream(int downstream_asn; prefix set prefixes; int set as_s
+         }
+     }
+ 
++    if is_aspa_invalid_customer() then {
++        print proto, ": ", net, ": invalid ASPA: ", bgp_path;
++        return false;
++    }
++
+     # If they don't want to export this to us, then we won't take it at all.
+     if (MY_ASN, LC_NO_EXPORT, MY_ASN) ~ bgp_large_community then {
+         print proto, ": ", net, ": rejected by no-export to AS", MY_ASN;
+```
+
+A [Python implementation][py-aspa-validate] of the validation function is also
+available along with [a suite of tests][py-aspa-test]. This helps ensure the
+version in the bird filter language is correct.
+
   [pv]: https://pathvector.io/
   [filter]: filter_bgp.conf
   [skeleton]: skeleton.conf
@@ -325,3 +409,8 @@ Routinator instance over HTTPS.
   [irr-script]: make-irr-filter
   [prefix-conf]: prefix-limits.example
   [prefix-script]: make-prefix-limits
+  [aspa]: https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification/
+  [aspa-script]: make-bird-aspa
+  [aspa-example]: aspa/example.json
+  [py-aspa-validate]: aspa/validate.py
+  [py-aspa-test]: aspa/test.py
