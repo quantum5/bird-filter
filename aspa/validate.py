@@ -87,10 +87,10 @@ class BirdValidator(Validator):
                 if self.is_invalid_pair(asn, prev_asn) and max_up_ramp > i:
                     max_up_ramp = i
 
-                if self.is_invalid_pair(prev_asn, asn) and min_down_ramp < i:
+                if self.is_invalid_pair(prev_asn, asn):
                     min_down_ramp = i
 
             prev_asn = asn
-            i += 1
+            i = i + 1
 
         return min_down_ramp > max_up_ramp
