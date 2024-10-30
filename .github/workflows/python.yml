@@ -1,0 +1,15 @@
+name: Run Python tests
+on:
+  push:
+  pull_request:
+jobs:
+  amd64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+      - name: Run Python unit tests
+        run: python -m unittest discover .
