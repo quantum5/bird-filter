@@ -1,13 +1,16 @@
 import json
 import re
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 reasn = re.compile(r"^AS(\d+)$")
 
 
-def parse_asn(text: str) -> Optional[int]:
-    match = reasn.match(text)
+def parse_asn(value: Union[str, int]) -> Optional[int]:
+    if isinstance(value, int):
+        return value
+
+    match = reasn.match(value)
     if match:
         return int(match.group(1))
 
@@ -16,14 +19,20 @@ def parse_asn(text: str) -> Optional[int]:
 class ASPA:
     customer: int
     providers: list[int]
-    ta: str
+    ta: Optional[str]
 
     @classmethod
     def from_dict(cls, d):
         try:
-            customer = parse_asn(d['customer'])
+            if 'customer' in d:
+                customer = parse_asn(d['customer'])
+            elif 'customer_asid' in d:
+                customer = parse_asn(d['customer_asid'])
+            else:
+                return None
+
             providers = list(map(parse_asn, d['providers']))
-            return cls(customer, providers, d['ta'])
+            return cls(customer, providers, d.get('ta'))
         except (KeyError, TypeError):
             return None
 
