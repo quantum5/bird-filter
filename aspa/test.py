@@ -118,6 +118,7 @@ class UpstreamTest(unittest.TestCase):
 
     def test_valid_edge(self):
         self.assertFalse(self.validator.is_aspa_invalid_upstream(64530, [64520, 64510]))
+        self.assertFalse(self.validator.is_aspa_invalid_upstream(64530, [64520, 64521]))
         self.assertFalse(self.validator.is_aspa_invalid_upstream(64530, [64520]))
         self.assertFalse(self.validator.is_aspa_invalid_upstream(64520, [64510]))
 
