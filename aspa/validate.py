@@ -24,10 +24,8 @@ class Validator:
 
         return False
 
-    def is_aspa_invalid_peer(self, peer_asn: int, bgp_path: list[int]) -> bool:
-        remove_peer = list(dropwhile(lambda asn: asn != peer_asn, bgp_path))
-
-        for prev_asn, asn in zip(chain([peer_asn], remove_peer), remove_peer):
+    def is_aspa_invalid_peer(self, bgp_path: list[int]) -> bool:
+        for prev_asn, asn in zip(bgp_path, bgp_path[1:]):
             if prev_asn == asn:
                 continue
 
@@ -66,11 +64,11 @@ class BirdValidator(Validator):
 
         return False
 
-    def is_aspa_invalid_peer(self, peer_asn: int, bgp_path: list[int]) -> bool:
-        prev_asn = peer_asn
+    def is_aspa_invalid_peer(self, bgp_path: list[int]) -> bool:
+        prev_asn = bgp_path[0]
 
         for asn in bgp_path:
-            if asn != peer_asn and prev_asn != asn and self.is_invalid_pair(prev_asn, asn):
+            if prev_asn != asn and self.is_invalid_pair(prev_asn, asn):
                 return True
             prev_asn = asn
 

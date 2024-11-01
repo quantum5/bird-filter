@@ -62,33 +62,33 @@ class PeerTest(unittest.TestCase):
         ])
 
     def test_all_valid(self):
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64501, [64501, 64500]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64502, [64502, 64501, 64500]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64503, [64503, 64502, 64501, 64500]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64504, [64504, 64503, 64502, 64501]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64504, [64504, 64503, 64502]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64504, [64504, 64503]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64504, [64504]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64501, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64502, 64501, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64503, 64502, 64501, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64504, 64503, 64502, 64501]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64504, 64503, 64502]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64504, 64503]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64504]))
 
     def test_prepend_valid(self):
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64501, [64501, 64500, 64500]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64502, [64502, 64502, 64501, 64501, 64500]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64503, [64503, 64502, 64502, 64501, 64500, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64501, 64500, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64502, 64502, 64501, 64501, 64500]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64503, 64502, 64502, 64501, 64500, 64500]))
 
     def test_some_unknown(self):
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64505, [64505, 64504, 64503, 64502]))
-        self.assertFalse(self.validator.is_aspa_invalid_peer(64503, [64503, 64503, 64502, 64505]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64505, 64504, 64503, 64502]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64503, 64503, 64502, 64505]))
 
     def test_all_unknown(self):
-        self.assertFalse(self.validator.is_aspa_invalid_customer(64506, [64506, 64507, 64508]))
+        self.assertFalse(self.validator.is_aspa_invalid_peer([64506, 64507, 64508]))
 
     def test_some_invalid(self):
-        self.assertTrue(self.validator.is_aspa_invalid_peer(64505, [64505, 64505, 64503, 64503]))
-        self.assertTrue(self.validator.is_aspa_invalid_peer(64504, [64504, 64503, 64506, 64500]))
+        self.assertTrue(self.validator.is_aspa_invalid_peer([64505, 64505, 64503, 64503]))
+        self.assertTrue(self.validator.is_aspa_invalid_peer([64504, 64503, 64506, 64500]))
 
     def test_peer_originated(self):
         for i in [64500, 64501, 64502, 64503, 64504, 64505]:
-            self.assertFalse(self.validator.is_aspa_invalid_peer(i, [i]))
+            self.assertFalse(self.validator.is_aspa_invalid_peer([i]))
 
 
 class UpstreamTest(unittest.TestCase):
