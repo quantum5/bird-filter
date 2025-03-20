@@ -241,6 +241,27 @@ session with your route collector over IPv6, using multiprotocol BGP to export
 routes for both IPv4 and IPv6 in a single session, using `add paths` to also
 all routes instead of the best routes available.
 
+### iBGP
+
+There is no true convention regarding iBGP usage since it's strictly internal
+to an AS, so this filter library will not attempt to make any assumption about
+how you might use iBGP. This means that by default, any route received from
+iBGP will not be exported by functions like `export_cone` or
+`export_to_downstream`. This avoids potential accidents like internal traffic
+engineering hijacks from being exported to the Internet and causing a major
+incident.
+
+To export an iBGP route to downstreams, set `export_downstream = 1;` in the
+import filter when importing the iBGP route.
+
+To export an iBGP route to upstreams, create a new `export_*` function that
+returns `true` for the subset of routes you wish to export, such as
+`export_ibgp`. Then, you can write your export clause as follows:
+
+```
+export where export_cone([PEER_ASN]) || export_ibgp();
+```
+
 ## BGP communities
 
 The following large informational communities are implemented by default:
