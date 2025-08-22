@@ -10,7 +10,7 @@ solution like [PathVector][pv].
 
 1. Make sure `bird` 2.x is installed, e.g. on Debian or Ubuntu, through
    `sudo apt install bird2`. This library has not been tested on versions
-   older than 2.0.13, so you may run into syntax errors on earlier versions.
+   older than 2.0.12, so you may run into syntax errors on earlier versions.
    In these cases, you'll need to look into backports or PPAs for a newer
    version.
 2. Clone this repository:
